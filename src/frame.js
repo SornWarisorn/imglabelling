@@ -12,7 +12,7 @@ export const FrameProvider = (props) => {
   const [width2, setWidth2] = useState(0)
   const [height2, setHeight2] = useState(0)
   const [count, setCount] = useState(0)
-  //const [draw, setDraw] = useState(0)
+  const [len, setLen] = useState(0)
   const value = {
     width1,
     setWidth1,
@@ -24,8 +24,8 @@ export const FrameProvider = (props) => {
     setHeight2,
     count,
     setCount,
-    //draw,
-    //setDraw
+    len,
+    setLen
   }
   return <FrameContext.Provider value={value} {...props} />
 }

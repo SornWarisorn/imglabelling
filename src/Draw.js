@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useFrameContext, FrameProvider } from "./frame";
-import { Stage, Layer, Rect, Image, Transformer } from "react-konva";
+import { Stage, Layer, Rect, Image, Transformer} from "react-konva";
+import Portal from './Portal';
 import Create from './Create'
+import { isPropertySignature } from "typescript";
 
 
-function DrawAnnotations() {
+function DrawAnnotations(props) {
     const {
       width1,
       setWidth1,
@@ -16,13 +18,13 @@ function DrawAnnotations() {
       setHeight2,
       count,
       setCount,
-      //draw,
-      //setDraw,
+      len,
+      setLen,
     } = useFrameContext();
   
     const [annotations, setAnnotations] = useState([]);
     const [newAnnotation, setNewAnnotation] = useState([]);
-  
+
     const handleMouseDown = (event) => {
       if (newAnnotation.length === 0) {
         const { x, y } = event.target.getStage().getPointerPosition();
@@ -46,7 +48,7 @@ function DrawAnnotations() {
         };
         setWidth1(sx);
         setHeight1(sy);
-        //setCount(count + 1);
+        setLen(annotationsToDraw.length);
         setNewAnnotation([]);
         setAnnotations((prevAnnotation) => [...prevAnnotation, annotationToAdd]);
       }
@@ -73,12 +75,18 @@ function DrawAnnotations() {
     };
   
     const annotationsToDraw = [...annotations, ...newAnnotation];
+    
   
     function setDraww() {
-      const values = [...annotationsToDraw];
-      values.splice(1, 1);
-      setAnnotations([]);
-      setNewAnnotation([]);
+      const values1 = [...annotations];
+      const values2 = [...newAnnotation];
+      //values1.reverse();
+      //values2.reverse();
+      values1.splice(0, 1);
+      values2.splice(0, 1);
+      setAnnotations(values1);
+      setNewAnnotation(values2);
+      setCount(count -1);
     }
   
     return (
@@ -87,12 +95,19 @@ function DrawAnnotations() {
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        onDblClick={setDraww}
         width={265}
         height={191}
         
       >
+        
         <Layer>
+        <FrameProvider>
+          <Portal>
+            
+              <Create data={setDraww} />
+              
+          </Portal>
+        </FrameProvider>  
           {annotationsToDraw.map((value) => {
             return (
               <Rect
@@ -102,14 +117,15 @@ function DrawAnnotations() {
                 height={value.height}
                 fill="transparent"
                 stroke="black"
-                //image={LionImage}
               ></Rect>
             );
           })}
+          
         </Layer>
         
       </Stage>
+      
     );
   }
 
-  export default DrawAnnotations;
+export default DrawAnnotations;

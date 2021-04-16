@@ -20,12 +20,9 @@ function App() {
           height: 191,
         }}
       >
-        <DrawAnnotations />
-        
-      </div>
-      <br />
-      
-      <Create />
+        <DrawAnnotations />        
+      </div>  
+      <Create/>
     </FrameProvider>
   );
 }

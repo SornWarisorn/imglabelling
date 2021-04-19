@@ -35,12 +35,14 @@ function Create(props) {
     setFields(values);
   }
 
-  function delvalue() {
-    w1.splice(0, 1);
-    w2.splice(0, 1);
-    h1.splice(0, 1);
-    h2.splice(0, 1);
+  function delvalue(count) {
+    w1.splice(count, 1);
+    w2.splice(count, 1);
+    h1.splice(count, 1);
+    h2.splice(count, 1);
   }
+
+  
 
   w1[count] = width1;
   w2[count] = width2;
@@ -83,16 +85,17 @@ function Create(props) {
                 type="button"
                 onClick={() => {
                   handleRemove(count);
-                  delvalue();
+                  delvalue(count);
                 }}
                 id={count}
               >
                 Remove
               </button>
-              <button onClick={props.data} id={count}>
-                {" "}
-                Remove roi{" "}
-              </button>
+              <button
+                onClick={props.data}
+              >
+                Delroi
+              </button> 
             </div>
           );
         })}

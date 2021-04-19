@@ -80,8 +80,6 @@ function DrawAnnotations(props) {
     function setDraww() {
       const values1 = [...annotations];
       const values2 = [...newAnnotation];
-      //values1.reverse();
-      //values2.reverse();
       values1.splice(0, 1);
       values2.splice(0, 1);
       setAnnotations(values1);
@@ -104,7 +102,7 @@ function DrawAnnotations(props) {
         <FrameProvider>
           <Portal>
             
-              <Create data={setDraww} />
+              <Create data={() => setDraww()} />
               
           </Portal>
         </FrameProvider>  

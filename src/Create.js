@@ -83,17 +83,15 @@ function Create(props) {
               />
               <button
                 type="button"
-                
                 onClick={() => {
                   handleRemove(count)
                   delvalue(count)
-                  props.data(count)
+                  props.setdrw(count)
                 }}
-                //onClick={props.data}
                 id={count}
               >
                 Remove
-              </button>
+              </button> 
             </div>
           );
         })}

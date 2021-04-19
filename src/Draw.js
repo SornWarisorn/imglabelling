@@ -20,10 +20,13 @@ function DrawAnnotations(props) {
       setCount,
       len,
       setLen,
+      aaa,
+      setAaa
     } = useFrameContext();
   
     const [annotations, setAnnotations] = useState([]);
     const [newAnnotation, setNewAnnotation] = useState([]);
+    
 
     const handleMouseDown = (event) => {
       if (newAnnotation.length === 0) {
@@ -77,14 +80,15 @@ function DrawAnnotations(props) {
     const annotationsToDraw = [...annotations, ...newAnnotation];
     
   
-    function setDraww() {
+    function setDraw(aaa) {
       const values1 = [...annotations];
-      const values2 = [...newAnnotation];
-      values1.splice(0, 1);
-      values2.splice(0, 1);
+      const values2 = [...newAnnotation]; 
+      values1.splice(aaa-1, 1);
+      values2.splice(aaa-1, 1);
       setAnnotations(values1);
       setNewAnnotation(values2);
-      //setCount(count -1);
+      setCount(count-1);
+      //alert(aaa);
     }
   
     return (
@@ -102,7 +106,7 @@ function DrawAnnotations(props) {
         <FrameProvider>
           <Portal>
             
-              <Create data={() => {setDraww(count)}} />
+              <Create setdrw={setDraw} />
               
           </Portal>
         </FrameProvider>  

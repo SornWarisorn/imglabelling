@@ -84,7 +84,7 @@ function DrawAnnotations(props) {
       values2.splice(0, 1);
       setAnnotations(values1);
       setNewAnnotation(values2);
-      setCount(count -1);
+      //setCount(count -1);
     }
   
     return (
@@ -98,11 +98,11 @@ function DrawAnnotations(props) {
         
       >
         
-        <Layer>
+        <Layer> 
         <FrameProvider>
           <Portal>
             
-              <Create data={() => setDraww()} />
+              <Create data={() => {setDraww(count)}} />
               
           </Portal>
         </FrameProvider>  

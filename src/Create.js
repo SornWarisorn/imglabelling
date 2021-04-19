@@ -10,7 +10,7 @@ var h2 = [];
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
-  const { width1, height1, width2, height2, count, len } = useFrameContext();
+  const { width1, height1, width2, height2, count, len, setCount } = useFrameContext();
 
   const divStyle = {
     overflow: "hidden",
@@ -42,7 +42,7 @@ function Create(props) {
     h2.splice(count, 1);
   }
 
-  
+ 
 
   w1[count] = width1;
   w2[count] = width2;
@@ -83,19 +83,17 @@ function Create(props) {
               />
               <button
                 type="button"
+                
                 onClick={() => {
-                  handleRemove(count);
-                  delvalue(count);
+                  handleRemove(count)
+                  delvalue(count)
+                  props.data(count)
                 }}
+                //onClick={props.data}
                 id={count}
               >
                 Remove
               </button>
-              <button
-                onClick={props.data}
-              >
-                Delroi
-              </button> 
             </div>
           );
         })}

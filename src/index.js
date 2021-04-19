@@ -22,7 +22,7 @@ function App() {
       >
         <DrawAnnotations />        
       </div>  
-      <Create/>
+      <Create />
     </FrameProvider>
   );
 }

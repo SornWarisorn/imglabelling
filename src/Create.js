@@ -10,7 +10,21 @@ var h2 = [];
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
-  const { width1, height1, width2, height2, count, len, setCount, aaa, setAaa, annotations, setAnnotations, newAnnotation, setNewAnnotation } = useFrameContext();
+  const {
+    width1,
+    height1,
+    width2,
+    height2,
+    count,
+    len,
+    setCount,
+    aaa,
+    setAaa,
+    annotations,
+    setAnnotations,
+    newAnnotation,
+    setNewAnnotation,
+  } = useFrameContext();
 
   const divStyle = {
     overflow: "hidden",
@@ -43,13 +57,14 @@ function Create(props) {
   }
 
   function setDraw(aaa) {
+    console.log(annotations)
     const values1 = [...annotations];
-    const values2 = [...newAnnotation]; 
-    values1.splice(aaa-1, 1);
-    values2.splice(aaa-1, 1);
+    const values2 = [...newAnnotation];
+    values1.splice(aaa - 1, 1);
+    values2.splice(aaa - 1, 1);
     setAnnotations(values1);
     setNewAnnotation(values2);
-    setCount(count-1);
+    setCount(count - 1);
     //alert(aaa);
   }
 
@@ -61,12 +76,9 @@ function Create(props) {
   return (
     <div className="App">
       <FrameProvider>
-        <button type="button" onClick={() => handleAdd()} >
+        <button type="button" onClick={() => handleAdd()}>
           Add Label
         </button>
-        <input type="text" value={count} />
-        <input type="text" value={len} />
-
         {fields.map((field, count) => {
           return (
             <div key={`${field}-${count}`} style={divStyle}>
@@ -93,15 +105,15 @@ function Create(props) {
               <button
                 type="button"
                 onClick={() => {
-                  handleRemove(count)
-                  delvalue(count)
-                  props.setdrw(count)
-                  //setDraw(count)
+                  handleRemove(count);
+                  delvalue(count);
+                  //props.setdrw(count);
+                  setDraw(count)
                 }}
                 id={count}
               >
                 Remove
-              </button> 
+              </button>
             </div>
           );
         })}

@@ -32,7 +32,7 @@ export default class Portal extends React.Component {
       children = React.cloneElement(children);
     }
 
-    ReactDOM.render(children, this.props.node || this.defaultNode);
+    ReactDOM.createPortal(children, this.props.node || this.defaultNode);
   }
 
   render() {

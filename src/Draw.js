@@ -21,11 +21,17 @@ function DrawAnnotations(props) {
       len,
       setLen,
       aaa,
-      setAaa
+      setAaa,
+      annotations,
+      setAnnotations,
+      newAnnotation,
+      setNewAnnotation,
+      //annotationsToDraw,
+      //setAnnotationsToDraw
     } = useFrameContext();
   
-    const [annotations, setAnnotations] = useState([]);
-    const [newAnnotation, setNewAnnotation] = useState([]);
+    //const [annotations, setAnnotations] = useState([]);
+    //const [newAnnotation, setNewAnnotation] = useState([]);
     
 
     const handleMouseDown = (event) => {
@@ -78,7 +84,8 @@ function DrawAnnotations(props) {
     };
   
     const annotationsToDraw = [...annotations, ...newAnnotation];
-    
+    //setAnnotationsToDraw(...annotations, ...newAnnotation);
+    //annotationsToDraw = [...annotations, ...newAnnotation];
   
     function setDraw(aaa) {
       const values1 = [...annotations];

@@ -14,6 +14,9 @@ export const FrameProvider = (props) => {
   const [count, setCount] = useState(0)
   const [len, setLen] = useState(0)
   const [aaa,setAaa] = useState(0)
+  const [annotations, setAnnotations] = useState([])
+  const [newAnnotation, setNewAnnotation] = useState([])
+  const annotationsToDraw = [];
   const value = {
     width1,
     setWidth1,
@@ -28,7 +31,13 @@ export const FrameProvider = (props) => {
     len,
     setLen,
     aaa,
-    setAaa
+    setAaa,
+    annotations,
+    setAnnotations,
+    newAnnotation,
+    setNewAnnotation,
+    annotationsToDraw,
+    //setAnnotationsToDraw
   }
   return <FrameContext.Provider value={value} {...props} />
 }

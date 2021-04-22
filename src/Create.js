@@ -10,7 +10,7 @@ var h2 = [];
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
-  const { width1, height1, width2, height2, count, len, setCount } = useFrameContext();
+  const { width1, height1, width2, height2, count, len, setCount, aaa, setAaa, annotations, setAnnotations, newAnnotation, setNewAnnotation } = useFrameContext();
 
   const divStyle = {
     overflow: "hidden",
@@ -42,7 +42,16 @@ function Create(props) {
     h2.splice(count, 1);
   }
 
- 
+  function setDraw(aaa) {
+    const values1 = [...annotations];
+    const values2 = [...newAnnotation]; 
+    values1.splice(aaa-1, 1);
+    values2.splice(aaa-1, 1);
+    setAnnotations(values1);
+    setNewAnnotation(values2);
+    setCount(count-1);
+    //alert(aaa);
+  }
 
   w1[count] = width1;
   w2[count] = width2;
@@ -87,6 +96,7 @@ function Create(props) {
                   handleRemove(count)
                   delvalue(count)
                   props.setdrw(count)
+                  //setDraw(count)
                 }}
                 id={count}
               >

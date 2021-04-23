@@ -37,7 +37,6 @@ export const FrameProvider = (props) => {
     newAnnotation,
     setNewAnnotation,
     annotationsToDraw,
-    //setAnnotationsToDraw
   }
   return <FrameContext.Provider value={value} {...props} />
 }

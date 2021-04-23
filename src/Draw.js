@@ -38,7 +38,13 @@ function DrawAnnotations(props) {
       if (newAnnotation.length === 0) {
         const { x, y } = event.target.getStage().getPointerPosition();
         setNewAnnotation([{ x, y, width: 0, height: 0, key: "0" }]);
-        setCount(count + 1);
+        if (len == 0) {
+          setCount(count);
+        }
+        else {
+          setCount(count + 1);
+        }
+        
       }
     };
   

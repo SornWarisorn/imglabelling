@@ -60,8 +60,8 @@ function Create(props) {
     console.log(annotations)
     const values1 = [...annotations];
     const values2 = [...newAnnotation];
-    values1.splice(aaa - 1, 1);
-    values2.splice(aaa - 1, 1);
+    values1.splice(aaa , 1);
+    values2.splice(aaa , 1);
     setAnnotations(values1);
     setNewAnnotation(values2);
     setCount(count - 1);
@@ -82,7 +82,7 @@ function Create(props) {
         {fields.map((field, count) => {
           return (
             <div key={`${field}-${count}`} style={divStyle}>
-              <input type="text" value={count} size="1" id={count} />
+              <input type="text" value={count+1} size="1" id={count} />
               <input
                 type="text"
                 value={

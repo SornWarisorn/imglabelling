@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import { useFrameContext, FrameProvider } from "./frame";
 import DrawAnnotations from "./Draw";
 import { isPropertySignature } from "typescript";
+//import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem, DropdownButton } from 'reactstrap';
+//import Dropdown from '/node-modules/react-dropdown';
+//import { Dropdown } from "semantic-ui-react";
+//import DropdownExampleDropdown from './Dropdown' ;
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
+import "./Create.css";
 
 var w1 = [];
 var w2 = [];
 var h1 = [];
 var h2 = [];
+
+const lv = ["Lv.0", "LV.1", "LV.2", "LV.3"];
+const options = ["one", "two", "three"];
+const defaultOption = options[0];
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
@@ -57,11 +68,11 @@ function Create(props) {
   }
 
   function setDraw(aaa) {
-    console.log(annotations)
+    console.log(annotations);
     const values1 = [...annotations];
     const values2 = [...newAnnotation];
-    values1.splice(aaa , 1);
-    values2.splice(aaa , 1);
+    values1.splice(aaa, 1);
+    values2.splice(aaa, 1);
     setAnnotations(values1);
     setNewAnnotation(values2);
     setCount(count - 1);
@@ -76,13 +87,14 @@ function Create(props) {
   return (
     <div className="App">
       <FrameProvider>
-        <button type="button" onClick={() => handleAdd()}>
+        <button type="button" onClick={() => handleAdd()} class="button_Add">
           Add Label
         </button>
+
         {fields.map((field, count) => {
           return (
-            <div key={`${field}-${count}`} style={divStyle}>
-              <input type="text" value={count+1} size="1" id={count} />
+            <div key={`${field}-${count}`} style={divStyle} class="pos_button">
+              <input type="text" value={count + 1} size="1" id={count} class="num"/>
               <input
                 type="text"
                 value={
@@ -95,22 +107,24 @@ function Create(props) {
                   h2[count]
                 }
                 id={count}
+                class="poswh"
               />
-              <input
-                type="text"
-                placeholder="Enter class name"
-                value={field.value || ""}
-                onChange={(e) => handleChange(count, e)}
-              />
+                <select class="select">
+                  <option value={lv[0]}> LV.0 </option>
+                  <option value={lv[1]}> LV.1 </option>
+                  <option value={lv[2]}> LV.2 </option>
+                  <option value={lv[3]}> LV.3 </option>
+                </select>
               <button
                 type="button"
                 onClick={() => {
                   handleRemove(count);
                   delvalue(count);
                   //props.setdrw(count);
-                  setDraw(count)
+                  setDraw(count);
                 }}
                 id={count}
+                class="button_Remove"
               >
                 Remove
               </button>

@@ -19,6 +19,7 @@ function App() {
           width: 265,
           height: 191,
         }}
+        class="pos"
       >
         <DrawAnnotations />
       </div>  

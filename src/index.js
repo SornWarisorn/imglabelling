@@ -28,7 +28,7 @@ function App() {
     <FrameProvider>
       <input type="text"/>
       <button onChange={handleClick}>sdfsfds</button>
-      <input type="text" value={Arr} />
+      <input type="text" value={Arr[0]} />
     </FrameProvider>
   );
 }

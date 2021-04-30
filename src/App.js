@@ -11,6 +11,9 @@ let routes = (
       <Route path="/labelling">
         <About />
       </Route>
+      <Route path="/class">
+        <About />
+      </Route>
     </Switch>
   );
 

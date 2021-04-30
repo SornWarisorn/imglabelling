@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <input type="text" />
-        <button type="button" onClick={() => {handleAdd(),handleClick()}} >
+        <button type="button" onClick={() => {handleAdd();handleClick()}} >
           Add Label
         </button>
 

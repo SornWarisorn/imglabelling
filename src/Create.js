@@ -66,7 +66,6 @@ function Create(props) {
   }
 
   function setDraw(aaa) {
-    console.log(annotations);
     const values1 = [...annotations];
     const values2 = [...newAnnotation];
     values1.splice(aaa, 1);

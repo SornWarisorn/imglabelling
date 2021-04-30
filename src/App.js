@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { BrowserRouter as Router, useHistory, Route, Link, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  useHistory,
+  Route,
+  Link,
+  Switch,
+  BrowserRouter,
+} from "react-router-dom";
 
 let routes = (
+  <BrowserRouter>
     <Switch>
       <Route exact path="/">
         <Home />
@@ -15,6 +23,7 @@ let routes = (
         <About />
       </Route>
     </Switch>
-  );
+  </BrowserRouter>
+);
 
 export default routes;

@@ -10,15 +10,23 @@ import "./index.css";
 import Create from "./Create";
 import DrawAnnotations from "./Draw";
 
-// var arr = [];
+function Class() {
+  
+    return (
+      <FrameProvider>
+        <div
+          style={{
+            backgroundImage: `url(${logo})`,
+            width: 265,
+            height: 191,
+          }}
+          class="pos"
+        >
+          <DrawAnnotations />
+        </div>  
+        <Create />
+      </FrameProvider>
+    );
+  }
 
-// function App() {
-//   return (
-//     <input type="text" />
-//     //<button onChange={} > add class </button>
-//     //<input type="text" value={arr} />
-//   );
-// }
-
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);
+export default Class;

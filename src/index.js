@@ -24,18 +24,6 @@ function App() {
 
   return (
     <FrameProvider>
-      
-      <div
-        style={{
-          backgroundImage: `url(${logo})`,
-          width: 265,
-          height: 191,
-        }}
-        class="pos"
-      >
-        <DrawAnnotations />
-      </div>  
-      <Create />
       <input type="text"/>
       <button onChange={handleClick}>sdfsfds</button>
       <input type="text" value={arr} />

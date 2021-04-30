@@ -9,8 +9,8 @@ import { isTypeAliasDeclaration, setTextRange } from "typescript";
 import "./index.css";
 import Create from './Create'
 import DrawAnnotations from './Draw'
-//import { BrowserRouter as Router, useHistory } from 'react-router-dom';
-
+import { BrowserRouter as Router, useHistory, Route, Link, Switch } from 'react-router-dom';
+import 
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
   }
 
   return (
+
     <FrameProvider>
       <input type="text"/>
       <button onChange={handleClick}>sdfsfds</button>

@@ -16,8 +16,6 @@ var h1 = [];
 var h2 = [];
 
 const lv = ["Lv.0", "LV.1", "LV.2", "LV.3"];
-const options = ["one", "two", "three"];
-const defaultOption = options[0];
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);

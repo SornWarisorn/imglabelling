@@ -9,10 +9,22 @@ import { isTypeAliasDeclaration, setTextRange } from "typescript";
 import "./index.css";
 import Create from './Create'
 import DrawAnnotations from './Draw'
+//import { BrowserRouter as Router, useHistory } from 'react-router-dom';
+
+var arr =[];
 
 function App() {
+
+  const [value, setValue] = useState(0);
+
+  const handleClick = (e) => {
+    setValue(e.target.value)
+    arr.push(e.target.value)
+  }
+
   return (
     <FrameProvider>
+      
       <div
         style={{
           backgroundImage: `url(${logo})`,
@@ -24,6 +36,9 @@ function App() {
         <DrawAnnotations />
       </div>  
       <Create />
+      <input type="text"/>
+      <button onChange={handleClick}>sdfsfds</button>
+      <input type="text" value={arr} />
     </FrameProvider>
   );
 }

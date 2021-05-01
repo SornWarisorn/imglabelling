@@ -58,6 +58,7 @@ const handleEmailChange = event => {
 const handleSubmit = event => {
   event.preventDefault();
   arr.push(email);
+  setEmail("");
 };
 
 

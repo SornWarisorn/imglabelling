@@ -9,6 +9,7 @@ import { isPropertySignature } from "typescript";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./Create.css";
+import { useHistory } from "react-router";
 
 var w1 = [];
 var w2 = [];
@@ -16,6 +17,74 @@ var h1 = [];
 var h2 = [];
 
 const lv = ["Lv.0", "LV.1", "LV.2", "LV.3"];
+const arr = [];
+
+function App2() {
+  const {
+    width1,
+    setWidth1,
+    height1,
+    setHeight1,
+    width2,
+    setWidth2,
+    height2,
+    setHeight2,
+    count,
+    setCount,
+    len,
+    setLen,
+    aaa,
+    setAaa,
+    annotations,
+    setAnnotations,
+    newAnnotation,
+    setNewAnnotation,
+    cls,
+    setCls,
+  } = useFrameContext();
+  const [email, setEmail] = useState('')
+
+
+let history = useHistory();
+
+function handleClick() {
+  history.push("/Label");
+}
+
+const handleEmailChange = event => {
+  setEmail(event.target.value)
+};
+
+const handleSubmit = event => {
+  event.preventDefault();
+  arr.push(email);
+};
+
+
+
+return (
+  <FrameProvider>
+  <form onSubmit={handleSubmit}>
+    <div>
+      <input
+        type="text"
+        placeholder="Enter text"
+        onChange={handleEmailChange}
+        value={email}
+      />
+    </div>
+    <button type="submit" >
+      Submit
+    </button>
+    <input type="text" value={arr} />
+    <button onClick={handleClick}>Done</button>
+  </form>
+  </FrameProvider>
+)
+}
+
+// export default App2;
+
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
@@ -107,10 +176,10 @@ function Create(props) {
                 class="poswh"
               />
                 <select class="select">
-                  <option value={lv[0]}> LV.0 </option>
-                  <option value={lv[1]}> LV.1 </option>
-                  <option value={lv[2]}> LV.2 </option>
-                  <option value={lv[3]}> LV.3 </option>
+                  <option value={arr[0]}> {arr[0]} </option>
+                  <option value={arr[1]}> {arr[1]} </option>
+                  <option value={arr[2]}> {arr[2]} </option>
+                  <option value={arr[3]}> {arr[3]} </option>
                 </select>
               <button
                 type="button"
@@ -133,4 +202,4 @@ function Create(props) {
   );
 }
 
-export default Create;
+export {Create as default ,App2};

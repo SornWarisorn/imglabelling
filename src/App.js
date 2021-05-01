@@ -11,7 +11,7 @@ import Create from './Create'
 import DrawAnnotations from './Draw'
 import { BrowserRouter as Router, useHistory, Route, Link, Switch } from 'react-router-dom';
 import Class from './Class'
-import App2 from './All'
+import {App2} from './Create'
 
 
  function App() {

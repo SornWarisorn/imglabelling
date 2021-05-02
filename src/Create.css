@@ -112,3 +112,37 @@
   background-color: #f1f1f1b4;
   color: black;
 }
+
+.poswhh {
+  width: 10%;
+  padding: 3px 10px;
+  margin: 100px 700px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #f1f1f1b4;
+  color: black;
+}
+
+.button_Addd {
+  position: relative;
+  left: 725px;
+  top: 110px;
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 11px;
+  margin: 0px 2px;
+  transition: 0.3s;
+  border-radius: 16px;
+  font-family: "Trirong", serif;
+}
+
+.button_Addd:hover {
+  background-color: #3e8e41;
+  color: white;
+}
+
+

@@ -43,7 +43,30 @@ function App2() {
     setCls,
   } = useFrameContext();
   const [email, setEmail] = useState('')
+  const [fields, setFields] = useState([{ value: null }]);
 
+  const divStyle = {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+  };
+
+  function handleChange(count, event) {
+    const values = [...fields];
+    values[count].value = event.target.value;
+    setFields(values);
+  }
+
+  function handleAdd() {
+    const values = [...fields];
+    values.push({ value: null });
+    setFields(values);
+  }
+
+  function handleRemove(count) {
+    const values = [...fields];
+    values.splice(count, 1);
+    setFields(values);
+  }
 
 let history = useHistory();
 
@@ -61,6 +84,9 @@ const handleSubmit = event => {
   setEmail("");
 };
 
+function delvalue(count) {
+  arr.splice(count, 1);
+}
 
 
 return (
@@ -72,13 +98,44 @@ return (
         placeholder="Enter class name"
         onChange={handleEmailChange}
         value={email}
+        class="poswhh"
       />
     </div>
-    <button type="submit" >
+    <button type="submit" onClick={() => handleAdd()} class="button_Addd">
       Add Class
     </button>
-    <input type="text" value={arr} />
-    <button onClick={handleClick}>Done</button>
+    <button onClick={handleClick} class="button_Addd">Done</button>
+    {fields.map((field, count) => {
+          return (
+            <div key={`${field}-${count}`} style={divStyle} class="pos_button">
+              <input type="text" value={count + 1} size="1" id={count} class="num"/>
+              <input
+                type="text"
+                value={
+                  arr[count]}
+                  id={count}
+                class="poswh"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  handleRemove(count);
+                  delvalue(count);
+                }}
+                id={count}
+                class="button_Remove"
+              >
+                Remove
+              </button>
+            </div>
+          );
+        })}
+
+
+
+
+
+    
   </form>
   </FrameProvider>
 )

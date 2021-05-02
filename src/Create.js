@@ -69,13 +69,13 @@ return (
     <div>
       <input
         type="text"
-        placeholder="Enter text"
+        placeholder="Enter class name"
         onChange={handleEmailChange}
         value={email}
       />
     </div>
     <button type="submit" >
-      Submit
+      Add Class
     </button>
     <input type="text" value={arr} />
     <button onClick={handleClick}>Done</button>
@@ -176,7 +176,7 @@ function Create(props) {
                 id={count}
                 class="poswh"
               />
-                <select class="select">
+                <select class="select" id={count}>
                   <option value={arr[0]}> {arr[0]} </option>
                   <option value={arr[1]}> {arr[1]} </option>
                   <option value={arr[2]}> {arr[2]} </option>

@@ -58,8 +58,14 @@ function App2() {
 
   function handleAdd() {
     const values = [...fields];
-    values.push({ value: null });
-    setFields(values);
+    if (arr.length == 0) {
+      setFields(values);
+    }
+    else {
+      values.push({ value: null });
+      setFields(values);
+    }
+    
   }
 
   function handleRemove(count) {

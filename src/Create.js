@@ -42,7 +42,7 @@ function App2() {
     cls,
     setCls,
   } = useFrameContext();
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
   const [fields, setFields] = useState([{ value: null }]);
 
   const divStyle = {
@@ -60,12 +60,10 @@ function App2() {
     const values = [...fields];
     if (arr.length == 0) {
       setFields(values);
-    }
-    else {
+    } else {
       values.push({ value: null });
       setFields(values);
     }
-    
   }
 
   function handleRemove(count) {
@@ -74,54 +72,55 @@ function App2() {
     setFields(values);
   }
 
-let history = useHistory();
+  let history = useHistory();
 
-function handleClick() {
-  history.push("/Label");
-}
+  function handleClick() {
+    history.push("/Label");
+  }
 
-const handleEmailChange = event => {
-  setEmail(event.target.value)
-};
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-const handleSubmit = event => {
-  event.preventDefault();
-  arr.push(email);
-  setEmail("");
-};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    arr.push(email);
+    setEmail("");
+  };
 
-function delvalue(count) {
-  arr.splice(count, 1);
-}
+  function delvalue(count) {
+    arr.splice(count, 1);
+  }
 
-
-return (
-  <FrameProvider>
-  <form onSubmit={handleSubmit}>
-    <div>
-      <input
-        type="text"
-        placeholder="Enter class name"
-        onChange={handleEmailChange}
-        value={email}
-        class="poswhh"
-      />
-    </div>
-    <button type="submit" onClick={() => handleAdd()} class="button_Addd">
-      Add Class
-    </button>
-    <button onClick={handleClick} class="button_Addd">Done</button>
-    {fields.map((field, count) => {
+  return (
+    <FrameProvider>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter class name"
+            onChange={handleEmailChange}
+            value={email}
+            class="poswhh"
+          />
+        </div>
+        <button type="submit" onClick={() => handleAdd()} class="button_Addd">
+          Add Class
+        </button>
+        <button onClick={handleClick} class="button_Addd">
+          Done
+        </button>
+        {fields.map((field, count) => {
           return (
             <div key={`${field}-${count}`} style={divStyle} class="pos_button">
-              <input type="text" value={count + 1} size="1" id={count} class="num"/>
               <input
                 type="text"
-                value={
-                  arr[count]}
-                  id={count}
-                class="poswh"
+                value={count + 1}
+                size="1"
+                id={count}
+                class="num"
               />
+              <input type="text" value={arr[count]} id={count} class="poswh" />
               <button
                 type="button"
                 onClick={() => {
@@ -136,19 +135,12 @@ return (
             </div>
           );
         })}
-
-
-
-
-
-    
-  </form>
-  </FrameProvider>
-)
+      </form>
+    </FrameProvider>
+  );
 }
 
 // export default App2;
-
 
 function Create(props) {
   const [fields, setFields] = useState([{ value: null }]);
@@ -224,7 +216,13 @@ function Create(props) {
         {fields.map((field, count) => {
           return (
             <div key={`${field}-${count}`} style={divStyle} class="pos_button">
-              <input type="text" value={count + 1} size="1" id={count} class="num"/>
+              <input
+                type="text"
+                value={count + 1}
+                size="1"
+                id={count}
+                class="num"
+              />
               <input
                 type="text"
                 value={
@@ -239,12 +237,11 @@ function Create(props) {
                 id={count}
                 class="poswh"
               />
-                <select class="select" id={count}>
-                  <option value={arr[0]}> {arr[0]} </option>
-                  <option value={arr[1]}> {arr[1]} </option>
-                  <option value={arr[2]}> {arr[2]} </option>
-                  <option value={arr[3]}> {arr[3]} </option>
-                </select>
+              <select class="select" id={count}>
+                {arr.map((arr) => (
+                  <option value={arr} id={count}>{arr}</option>
+                ))}
+              </select>
               <button
                 type="button"
                 onClick={() => {
@@ -266,4 +263,4 @@ function Create(props) {
   );
 }
 
-export {Create as default ,App2};
+export { Create as default, App2 };

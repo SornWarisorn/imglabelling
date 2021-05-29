@@ -26,6 +26,10 @@ function DrawAnnotations(props) {
       setAnnotations,
       newAnnotation,
       setNewAnnotation,
+      opacity1,
+    setOpacity1,
+    opacity2,
+    setOpacity2,
       //annotationsToDraw,
       //setAnnotationsToDraw
     } = useFrameContext();
@@ -59,6 +63,7 @@ function DrawAnnotations(props) {
           y: sy,
           width: x - sx,
           height: y - sy,
+          //stroke:'rgba(52, 52, 52, 0.0)',
           key: annotations.length + 1,
         };
         setWidth1(sx);
@@ -103,6 +108,8 @@ function DrawAnnotations(props) {
       setCount(count-1);
       //alert(aaa);
     }
+
+    
   
     return (
        
@@ -131,7 +138,7 @@ function DrawAnnotations(props) {
                 width={value.width}
                 height={value.height}
                 fill="transparent"
-                stroke="black"
+                stroke='rgba(52, 52, 52, 1.0)'
               ></Rect>
             );
           })}

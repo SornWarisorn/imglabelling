@@ -158,6 +158,10 @@ function Create(props) {
     setAnnotations,
     newAnnotation,
     setNewAnnotation,
+    opacity1,
+    setOpacity1,
+    opacity2,
+    setOpacity2,
   } = useFrameContext();
 
   const divStyle = {
@@ -181,6 +185,7 @@ function Create(props) {
     const values = [...fields];
     values.splice(count, 1);
     setFields(values);
+    setCount(count - 1);
   }
 
   function delvalue(count) {
@@ -188,18 +193,72 @@ function Create(props) {
     w2.splice(count, 1);
     h1.splice(count, 1);
     h2.splice(count, 1);
+    //alert(count);
+
+    //w1.splice(4, 1);
   }
 
   function setDraw(aaa) {
     const values1 = [...annotations];
     const values2 = [...newAnnotation];
-    values1.splice(aaa, 1);
-    values2.splice(aaa, 1);
+    values1.splice(0, 1);
+    values2.splice(0, 1);
     setAnnotations(values1);
     setNewAnnotation(values2);
-    setCount(count - 1);
-    //alert(aaa);
+    //setCount(count - 1);
+    // alert(aaa);
   }
+
+  // function setOpacity(bbb) {
+  //   w1[bbb] = width1;
+  //   w2[bbb] = width2;
+  //   h1[bbb] = height1;
+  //   h2[bbb] = height2;
+  //   const values1 = [...annotations];
+  //   const values2 = [...newAnnotation];
+  //   values1[bbb] = [
+  //     {
+  //       // width1,
+  //       //   height1,
+  //       //   width: width2 - width1,
+  //       //   height: height2 - height1,
+  //       //   key: "0",
+  //         stroke: "rgba(52, 52, 52, 0.5)",
+  //     },
+  //   ]
+  //   values2[bbb] = [
+  //     {
+  //       // width1,
+  //       //   height1,
+  //       //   width: width2 - width1,
+  //       //   height: height2 - height1,
+  //       //   key: "0",
+  //         stroke: "rgba(52, 52, 52, 0.5)",
+  //     },
+  //   ]
+  //   // setAnnotations([
+  //   //     {
+  //   //       width1,
+  //   //         height1,
+  //   //         width: width2 - width1,
+  //   //         height: height2 - height1,
+  //   //         key: "0",
+  //   //         stroke: "rgba(52, 52, 52, 0.0)",
+  //   //     },
+  //   //   ]);
+  //   // setNewAnnotation([
+  //   //   {
+  //   //     width1,
+  //   //       height1,
+  //   //       width: width2 - width1,
+  //   //       height: height2 - height1,
+  //   //       key: "0",
+  //   //       stroke: "rgba(52, 52, 52, 0.0)",
+  //   //   },
+  //   // ]);
+  //   setAnnotations(values1);
+  //   setNewAnnotation(values2);
+  // }
 
   w1[count] = width1;
   w2[count] = width2;
@@ -208,8 +267,9 @@ function Create(props) {
 
   return (
     <div className="App">
+      {/* <div className="rectangle" /> */}
       <FrameProvider>
-        <button type="button" onClick={() => handleAdd()} class="button_Add">
+        <button type="button" onClick={() => {handleAdd(); setDraw(count);}} class="button_Add">
           Add Label
         </button>
 
@@ -237,9 +297,9 @@ function Create(props) {
                 id={count}
                 class="poswh"
               />
-              <select class="select" id={count}>
+              <select class="select">
                 {arr.map((arr) => (
-                  <option value={arr} id={count}>{arr}</option>
+                  <option value={arr}>{arr}</option>
                 ))}
               </select>
               <button
@@ -247,14 +307,22 @@ function Create(props) {
                 onClick={() => {
                   handleRemove(count);
                   delvalue(count);
-                  //props.setdrw(count);
-                  setDraw(count);
+                  // props.setdrw(count);
+                  // setDraw(count);
                 }}
                 id={count}
                 class="button_Remove"
               >
                 Remove
               </button>
+              {/* <button
+                type="button"
+                onClick={() => {setOpacity(count)}}
+                id={count}
+                class="button_Remove"
+              >
+                opacity
+              </button> */}
             </div>
           );
         })}
